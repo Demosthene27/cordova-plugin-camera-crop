@@ -16,7 +16,7 @@
        specific language governing permissions and limitations
        under the License.
 */
-package org.apache.cordova.camera;
+package com.demosthene27.cameracrop;
 
 import android.Manifest;
 import android.app.Activity;
@@ -42,6 +42,8 @@ import android.provider.MediaStore;
 import androidx.core.content.FileProvider;
 import android.util.Base64;
 
+import com.soundcloud.android.crop.Crop;
+
 import org.apache.cordova.BuildHelper;
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;
@@ -50,6 +52,7 @@ import org.apache.cordova.PermissionHelper;
 import org.apache.cordova.PluginResult;
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -126,6 +129,9 @@ public class CameraLauncher extends CordovaPlugin implements MediaScannerConnect
 
     public CallbackContext callbackContext;
     private int numPics;
+       
+    private Uri inputUri;
+    private Uri outputUri;
 
     private MediaScannerConnection conn;    // Used to update gallery app with newly-written files
     private Uri scanMe;                     // Uri of image to be added to content store
